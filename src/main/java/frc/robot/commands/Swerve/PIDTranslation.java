@@ -20,7 +20,7 @@ public class PIDTranslation extends PIDCommand {
         // The controller that the command will use
         new PIDController(0.2, 0.1, 0), //TODO: tune this
         // This should return the measurement
-        () -> light.getTX("shooter"),
+        () -> light.getTX("intake"),
         // This should return the setpoint (can also be a constant)
         () -> 0,
         // This uses the output

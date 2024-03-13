@@ -47,7 +47,7 @@ public final class Constants {
         public static final double kSpeakerMidAngle = 50;
         public static final double kSpeakerFarAngle = 58.75;
         public static final double kArmHomeAngle = 0;
-        public static final double kYeetAngle = 50; //TODO: Tune this number at Mason
+    public static final double kYeetAngle = 50; //TODO: Tune this number at Mason
     }
 
     public final class IntakeConstants {

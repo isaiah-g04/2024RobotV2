@@ -67,6 +67,7 @@ public class RobotContainer {
         NamedCommands.registerCommand("reset", new ReturnToBasic(m_arm, m_shooter, m_intake, m_feeder));
         NamedCommands.registerCommand("ampDrop", new AmpDrop(m_arm, m_intake, m_shooter, m_feeder));
         NamedCommands.registerCommand("autoShoot", new AutoShoot(m_shooter, m_swerve, m_light, m_feeder, m_arm, m_intake));
+        NamedCommands.registerCommand("autoIntake", new AutoAdjustIntake(m_feeder, m_intake, m_arm, m_shooter, m_light, m_swerve));
 
         // Configure the button bindings
         configureButtonBindings();

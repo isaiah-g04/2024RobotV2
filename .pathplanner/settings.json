@@ -3,12 +3,13 @@
   "robotLength": 0.9,
   "holonomicMode": true,
   "pathFolders": [
+    "2 Amp 1 Speaker",
     "2 Note Amp Side",
     "3 Note Amp Side",
     "4 Note Inside",
     "Amp and 2",
     "Front 2",
-    "2 Amp 1 Speaker",
+    "Adjusting Intake",
     "Single Note Source"
   ],
   "autoFolders": [
