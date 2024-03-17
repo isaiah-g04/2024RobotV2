@@ -16,25 +16,6 @@
           "data": {
             "pathName": "AI Part 1"
           }
-        },
-        {
-          "type": "deadline",
-          "data": {
-            "commands": [
-              {
-                "type": "named",
-                "data": {
-                  "name": "autoIntake"
-                }
-              },
-              {
-                "type": "path",
-                "data": {
-                  "pathName": "AI Part 2"
-                }
-              }
-            ]
-          }
         }
       ]
     }

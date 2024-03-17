@@ -31,7 +31,7 @@ public class Climber extends SubsystemBase {
   /** Creates a new Climber. */
   public Climber() {
     
-    m_armClimber.setInverted(true);
+    m_armClimber.setInverted(false);
     m_hookClimber.setInverted(true);
 
     m_armClimber.setIdleMode(IdleMode.kBrake);
@@ -43,8 +43,8 @@ public class Climber extends SubsystemBase {
     m_armEncoder.setPosition(0);
     m_hookEncoder.setPosition(0);
 
-    m_armEncoder.setPositionConversionFactor(0.008);
-    m_hookEncoder.setPositionConversionFactor(0.04);
+    m_armEncoder.setPositionConversionFactor(0.05);
+    m_hookEncoder.setPositionConversionFactor(0.05);
 
     setupPID();
 

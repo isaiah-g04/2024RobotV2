@@ -35,7 +35,7 @@ public class RaiseHooks extends Command {
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    if (m_climber.getHookEncoder() >= 5) {
+    if (m_climber.getHookEncoder() >= 1) {
       return true;
     } else {
       return false;

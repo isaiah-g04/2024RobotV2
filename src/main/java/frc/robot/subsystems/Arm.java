@@ -38,7 +38,7 @@ public class Arm extends ProfiledPIDSubsystem {
           )
         );
 
-    m_armMotor.setInverted(true);
+    m_armMotor.setInverted(false);
     m_encoder = m_armMotor.getEncoder();
     m_encoder.setPositionConversionFactor((125 * (32 / 12)) / 360);
     m_encoder.setPositionConversionFactor(1);
