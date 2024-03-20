@@ -6,6 +6,7 @@ package frc.robot.commands.Combo;
 
 import edu.wpi.first.wpilibj2.command.ParallelCommandGroup;
 import edu.wpi.first.wpilibj2.command.ParallelDeadlineGroup;
+import edu.wpi.first.wpilibj2.command.PrintCommand;
 import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
 import frc.robot.commands.Arm.SetArmAngle;
 import frc.robot.commands.Arm.WaitForArmAngle;
@@ -14,6 +15,7 @@ import frc.robot.commands.Feeder.WaitForNoNote;
 import frc.robot.commands.Feeder.WaitForNote;
 import frc.robot.commands.Shooter.AutoRPM;
 import frc.robot.commands.Shooter.SetShooterSpeed;
+import frc.robot.commands.Shooter.WaitForShooterSpeed;
 import frc.robot.commands.Swerve.PIDTurning;
 import frc.robot.subsystems.Arm;
 import frc.robot.subsystems.Feeder;
@@ -30,7 +32,7 @@ public class AutoShoot extends SequentialCommandGroup {
     addCommands(
       new ParallelDeadlineGroup(
         new WaitForArmAngle(() -> light.getTargetArmAngle(), arm),
-        new AutoRPM(shooter, light),
+        new WaitForShooterSpeed(light.getTargetRPM(), shooter),
         new PIDTurning(swerve, light)
       ),
       new ParallelDeadlineGroup(

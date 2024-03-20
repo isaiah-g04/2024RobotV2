@@ -4,8 +4,6 @@
 
 package frc.robot.commands.Combo;
 
-import edu.wpi.first.wpilibj.PS5Controller;
-import edu.wpi.first.wpilibj.GenericHID.RumbleType;
 import edu.wpi.first.wpilibj2.command.ParallelDeadlineGroup;
 import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
 import frc.robot.commands.Feeder.SetFeederSpeed;

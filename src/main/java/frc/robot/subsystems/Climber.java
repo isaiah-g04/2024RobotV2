@@ -32,7 +32,7 @@ public class Climber extends SubsystemBase {
   public Climber() {
     
     m_armClimber.setInverted(false);
-    m_hookClimber.setInverted(true);
+    m_hookClimber.setInverted(false);
 
     m_armClimber.setIdleMode(IdleMode.kBrake);
     m_hookClimber.setIdleMode(IdleMode.kBrake);
@@ -99,6 +99,7 @@ public class Climber extends SubsystemBase {
   }
 
   public void stopArms() {
+    m_armClimber.set(0);
     m_armClimber.stopMotor();
   }
 
@@ -111,6 +112,7 @@ public class Climber extends SubsystemBase {
   }
 
   public void stopHooks() {
+    m_hookClimber.set(0);
     m_hookClimber.stopMotor();
   }
 

@@ -13,7 +13,6 @@ import frc.robot.commands.Intake.IdleOuttake;
 import frc.robot.commands.Intake.SimpleIntake;
 import frc.robot.commands.Intake.StopIntake;
 import frc.robot.commands.Swerve.PIDTranslation;
-import frc.robot.commands.Swerve.PIDTurning;
 import frc.robot.commands.Swerve.PIDTurningIntake;
 import frc.robot.subsystems.Arm;
 import frc.robot.subsystems.Feeder;

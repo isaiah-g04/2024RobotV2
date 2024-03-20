@@ -29,15 +29,17 @@ public class Limelight extends SubsystemBase {
   }
 
   public double getDistance() {
-    return (LimelightConstants.kGoalHeightMeters - LimelightConstants.kLimelightLensHeightMeters) / Math.tan(LimelightConstants.kMountAngleRadians + Units.degreesToRadians(LimelightHelpers.getTY("shooter")));
+    // System.out.println((LimelightConstants.kGoalHeightMeters - LimelightConstants.kLimelightLensHeightMeters) / Math.tan(LimelightConstants.kMountAngleRadians + Units.degreesToRadians(LimelightHelpers.getTY("limelight-shooter"))));
+    return (LimelightConstants.kGoalHeightMeters - LimelightConstants.kLimelightLensHeightMeters) / Math.tan(LimelightConstants.kMountAngleRadians + Units.degreesToRadians(LimelightHelpers.getTY("limelight-shooter")));
   }
 
   public double getTargetArmAngle() {
-    return  (14.7 + (21.6 * getDistance()) + (-2.71 * Math.pow(getDistance(), 2)));
+    return (14.4 + (16.7 * getDistance()) + (-1.88 * Math.pow(getDistance(), 2)));
   }
 
   public double getTargetRPM() {
-    return (15 + (45 * getDistance()));
+    // System.out.println((15 + (5 * getDistance())));
+    return (45 + (5 * getDistance()));
   }
 
   public double getTX(String limelight) {
@@ -50,9 +52,9 @@ public class Limelight extends SubsystemBase {
 
   private void setCorrectTarget() {
     if (DriverStation.getAlliance().get() == Alliance.Blue) {
-      LimelightHelpers.setPriorityTagID("shooter", 1);
+      LimelightHelpers.setPriorityTagID("limelight-shooter", 1);
     } else if (DriverStation.getAlliance().get() == Alliance.Red) {
-      LimelightHelpers.setPriorityTagID("shooter", 3);
+      LimelightHelpers.setPriorityTagID("limelight-shooter", 3);
     } else {
       DriverStation.reportError("Did not get alliance to setup Limelight.", true);
     }

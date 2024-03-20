@@ -15,9 +15,9 @@ public class PIDTurning extends PIDCommand {
   public PIDTurning(Swerve swerve, Limelight light) {
     super(
         // The controller that the command will use
-        new PIDController(0.2, 0.1, 0), //TODO: tune this
+        new PIDController(0.08, 0.1, 0.01), //TODO: tune this
         // This should return the measurement
-        () -> light.getTX("shooter"),
+        (() -> light.getTX("limelight-shooter") - 10),
         // This should return the setpoint (can also be a constant)
         () -> 0,
         // This uses the output
@@ -27,7 +27,7 @@ public class PIDTurning extends PIDCommand {
         });
     // Use addRequirements() here to declare subsystem dependencies.
     // Configure additional PID options by calling `getController` here.
-    getController().setTolerance(1.5);
+    getController().setTolerance(0.25);
     addRequirements(swerve);
   }
 
