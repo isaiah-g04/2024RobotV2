@@ -3,25 +3,41 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 0.7913245719729881,
-        "y": 6.719352940485241
+        "x": 1.34,
+        "y": 3.98
       },
       "prevControl": null,
       "nextControl": {
-        "x": 0.8108009573077285,
-        "y": 6.70961474781787
+        "x": 1.6385473340341703,
+        "y": 2.726693946863577
       },
       "isLocked": false,
       "linkedName": null
     },
     {
       "anchor": {
-        "x": 3.90754622553136,
-        "y": 7.634743051218012
+        "x": 4.725554409590433,
+        "y": 4.0900409202953645
       },
       "prevControl": {
-        "x": 3.980641726408008,
-        "y": 7.613993348983139
+        "x": 4.8716272996009815,
+        "y": 2.6780029835267265
+      },
+      "nextControl": {
+        "x": 4.72107309789212,
+        "y": 4.1333602667123985
+      },
+      "isLocked": false,
+      "linkedName": null
+    },
+    {
+      "anchor": {
+        "x": 8.29947111851519,
+        "y": 4.0900409202953645
+      },
+      "prevControl": {
+        "x": 8.77999473318046,
+        "y": 4.09491001662905
       },
       "nextControl": null,
       "isLocked": false,
@@ -39,13 +55,13 @@
   },
   "goalEndState": {
     "velocity": 0,
-    "rotation": 1.1457628381751745,
-    "rotateFast": false
+    "rotation": 0,
+    "rotateFast": true
   },
   "reversed": false,
-  "folder": "2 Amp 1 Speaker",
+  "folder": "New Auto Sourceside",
   "previewStartingState": {
-    "rotation": 58.2405199151872,
+    "rotation": -48.77836934023545,
     "velocity": 0
   },
   "useDefaultConstraints": true

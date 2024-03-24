@@ -2,19 +2,38 @@
   "version": 1.0,
   "startingPose": {
     "position": {
-      "x": 0.460226021282411,
-      "y": 4.158208268966954
+      "x": 0.4302445599110852,
+      "y": 4.090989651838924
     },
-    "rotation": -1.3639275316030048
+    "rotation": 0
   },
   "command": {
     "type": "sequential",
     "data": {
       "commands": [
         {
-          "type": "named",
+          "type": "path",
           "data": {
-            "name": "autoShoot"
+            "pathName": "New Auto 4NI 1"
+          }
+        },
+        {
+          "type": "deadline",
+          "data": {
+            "commands": [
+              {
+                "type": "wait",
+                "data": {
+                  "waitTime": 2.0
+                }
+              },
+              {
+                "type": "named",
+                "data": {
+                  "name": "autoShoot"
+                }
+              }
+            ]
           }
         },
         {
@@ -28,25 +47,6 @@
           "data": {
             "commands": [
               {
-                "type": "path",
-                "data": {
-                  "pathName": "SNS Part 1"
-                }
-              },
-              {
-                "type": "named",
-                "data": {
-                  "name": "runIntake"
-                }
-              }
-            ]
-          }
-        },
-        {
-          "type": "deadline",
-          "data": {
-            "commands": [
-              {
                 "type": "named",
                 "data": {
                   "name": "runIntake"
@@ -55,7 +55,7 @@
               {
                 "type": "path",
                 "data": {
-                  "pathName": "SNS Part 2"
+                  "pathName": "New Auto 4NI 2"
                 }
               }
             ]
@@ -99,15 +99,84 @@
               {
                 "type": "path",
                 "data": {
-                  "pathName": "SNS Part 3"
+                  "pathName": "New Auto 4NI 3"
                 }
               }
             ]
+          }
+        },
+        {
+          "type": "deadline",
+          "data": {
+            "commands": [
+              {
+                "type": "wait",
+                "data": {
+                  "waitTime": 2.0
+                }
+              },
+              {
+                "type": "named",
+                "data": {
+                  "name": "autoShoot"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "reset"
+          }
+        },
+        {
+          "type": "deadline",
+          "data": {
+            "commands": [
+              {
+                "type": "named",
+                "data": {
+                  "name": "runIntake"
+                }
+              },
+              {
+                "type": "path",
+                "data": {
+                  "pathName": "New Auto 4NI 4"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "type": "deadline",
+          "data": {
+            "commands": [
+              {
+                "type": "wait",
+                "data": {
+                  "waitTime": 2.0
+                }
+              },
+              {
+                "type": "named",
+                "data": {
+                  "name": "autoShoot"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "reset"
           }
         }
       ]
     }
   },
-  "folder": null,
+  "folder": "New Autos",
   "choreoAuto": false
 }

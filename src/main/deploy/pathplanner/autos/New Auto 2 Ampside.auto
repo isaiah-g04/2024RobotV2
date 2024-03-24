@@ -2,32 +2,25 @@
   "version": 1.0,
   "startingPose": {
     "position": {
-      "x": 1.4,
-      "y": 5.52
+      "x": 0.44074963594767125,
+      "y": 7.3620736565316545
     },
-    "rotation": 0.0
+    "rotation": 0
   },
   "command": {
     "type": "sequential",
     "data": {
       "commands": [
         {
-          "type": "deadline",
+          "type": "path",
           "data": {
-            "commands": [
-              {
-                "type": "wait",
-                "data": {
-                  "waitTime": 2.0
-                }
-              },
-              {
-                "type": "named",
-                "data": {
-                  "name": "autoShoot"
-                }
-              }
-            ]
+            "pathName": "New Auto 2 Ampside 1"
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "ampDrop"
           }
         },
         {
@@ -37,7 +30,7 @@
               {
                 "type": "wait",
                 "data": {
-                  "waitTime": 1.5
+                  "waitTime": 2.0
                 }
               },
               {
@@ -62,16 +55,10 @@
               {
                 "type": "path",
                 "data": {
-                  "pathName": "GetNote"
+                  "pathName": "New Auto 2 Ampside 2"
                 }
               }
             ]
-          }
-        },
-        {
-          "type": "path",
-          "data": {
-            "pathName": "Scoot"
           }
         },
         {
@@ -92,10 +79,16 @@
               }
             ]
           }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "reset"
+          }
         }
       ]
     }
   },
-  "folder": null,
+  "folder": "New Autos",
   "choreoAuto": false
 }

@@ -2,40 +2,49 @@
 // Open Source Software; you can modify and/or share it under the terms of
 // the WPILib BSD license file in the root directory of this project.
 
-package frc.robot.commands.Climber.Hooks;
+package frc.robot.commands.Blinkin;
 
+import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj2.command.Command;
-import frc.robot.subsystems.Climber;
+import frc.robot.LimelightHelpers;
+import frc.robot.subsystems.Limelight;
 
-public class RaiseHooks extends Command {
-  private final Climber m_climber;
-  /** Creates a new RaiseHooks. */
-  public RaiseHooks(Climber climber) {
+public class BlinkLimelight extends Command {
+  private final Limelight m_light;
+  private final Timer m_timer;
+
+  /** Creates a new BlinkLimelight. */
+  public BlinkLimelight(Limelight light) {
     // Use addRequirements() here to declare subsystem dependencies.
-    m_climber = climber;
-    addRequirements(m_climber);
+    m_light = light;
+    m_timer = new Timer();
   }
 
   // Called when the command is initially scheduled.
   @Override
-  public void initialize() {}
+  public void initialize() {
+    m_timer.start();
+  }
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    m_climber.raiseHooks();
+    LimelightHelpers.setLEDMode_ForceBlink("limelight-shooter");
+    LimelightHelpers.setLEDMode_ForceBlink("limelight-intake");
   }
 
   // Called once the command ends or is interrupted.
   @Override
   public void end(boolean interrupted) {
-    m_climber.stopHooks();
+    LimelightHelpers.setLEDMode_ForceOff("limelight-shooter");
+    LimelightHelpers.setLEDMode_ForceOff("limelight-intake");
+    m_timer.stop();
   }
 
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    if (m_climber.getHookEncoder() >= 3.9) {
+    if (m_timer.get() > 3) {
       return true;
     } else {
       return false;

@@ -34,12 +34,12 @@ public class Limelight extends SubsystemBase {
   }
 
   public double getTargetArmAngle() {
-    return (14.4 + (16.7 * getDistance()) + (-1.88 * Math.pow(getDistance(), 2)));
+    return (15.2 + (16.7 * getDistance()) + (-1.68 * Math.pow(getDistance(), 2)));
   }
 
   public double getTargetRPM() {
-    // System.out.println((15 + (5 * getDistance())));
-    return (45 + (5 * getDistance()));
+    // System.out.println((65 + (5 * getDistance())));
+    return (65 + (5 * getDistance()));
   }
 
   public double getTX(String limelight) {
@@ -52,11 +52,12 @@ public class Limelight extends SubsystemBase {
 
   private void setCorrectTarget() {
     if (DriverStation.getAlliance().get() == Alliance.Blue) {
-      LimelightHelpers.setPriorityTagID("limelight-shooter", 1);
+      LimelightHelpers.setPriorityTagID("limelight-shooter", 7);
     } else if (DriverStation.getAlliance().get() == Alliance.Red) {
-      LimelightHelpers.setPriorityTagID("limelight-shooter", 3);
+      LimelightHelpers.setPriorityTagID("limelight-shooter", 4);
     } else {
-      DriverStation.reportError("Did not get alliance to setup Limelight.", true);
+      // DriverStation.reportError("Did not get alliance to setup Limelight.", true);
+      System.out.println("Did not get alliance to setup Limelight.");
     }
   }
 

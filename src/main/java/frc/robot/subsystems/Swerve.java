@@ -47,8 +47,8 @@ public class Swerve extends SubsystemBase {
             this::getChassisSpeeds,
             this::setChassisSpeeds,
             new HolonomicPathFollowerConfig(
-                new PIDConstants(1, 0, 0), //TODO: tune these
-                new PIDConstants(1, 0, 0),
+                new PIDConstants(2.75, 1.25, 0), //TODO: tune these
+                new PIDConstants(2.75, 1.25, 0),
                 SwerveConstants.maxSpeed,
                 SwerveConstants.driveBaseRadius,
                 new ReplanningConfig()
@@ -125,6 +125,10 @@ public class Swerve extends SubsystemBase {
 
     public void setPose(Pose2d pose) {
         m_swerveOdometry.resetPosition(getGyroYaw(), getModulePositions(), pose);
+    }
+
+    public void futurePose(Pose2d pose) {
+        
     }
 
     public Rotation2d getHeading(){

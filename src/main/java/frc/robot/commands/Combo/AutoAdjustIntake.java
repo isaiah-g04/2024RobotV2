@@ -12,6 +12,7 @@ import frc.robot.commands.Feeder.WaitForNote;
 import frc.robot.commands.Intake.IdleOuttake;
 import frc.robot.commands.Intake.SimpleIntake;
 import frc.robot.commands.Intake.StopIntake;
+import frc.robot.commands.Swerve.DriveOverNote;
 import frc.robot.commands.Swerve.PIDTranslation;
 import frc.robot.commands.Swerve.PIDTurningIntake;
 import frc.robot.subsystems.Arm;
@@ -27,8 +28,8 @@ public class AutoAdjustIntake extends SequentialCommandGroup {
     // Add your commands in the addCommands() call, e.g.
     // addCommands(new FooCommand(), new BarCommand());
     addCommands(
-      new PIDTurningIntake(swerve, light),
       new PIDTranslation(swerve, light),
+      new DriveOverNote(swerve, light),
       new ParallelDeadlineGroup(
         new WaitForNote(feeder), 
         new SimpleIntake(intake),

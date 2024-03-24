@@ -2,32 +2,25 @@
   "version": 1.0,
   "startingPose": {
     "position": {
-      "x": 1.4,
-      "y": 5.52
+      "x": 0.5051400698655487,
+      "y": 7.307074489631092
     },
-    "rotation": 0.0
+    "rotation": 0
   },
   "command": {
     "type": "sequential",
     "data": {
       "commands": [
         {
-          "type": "deadline",
+          "type": "path",
           "data": {
-            "commands": [
-              {
-                "type": "wait",
-                "data": {
-                  "waitTime": 2.0
-                }
-              },
-              {
-                "type": "named",
-                "data": {
-                  "name": "autoShoot"
-                }
-              }
-            ]
+            "pathName": "New Auto FA 1"
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "ampDrop"
           }
         },
         {
@@ -50,28 +43,47 @@
           }
         },
         {
+          "type": "path",
+          "data": {
+            "pathName": "New Auto FA 2"
+          }
+        },
+        {
           "type": "deadline",
           "data": {
             "commands": [
               {
-                "type": "named",
+                "type": "path",
                 "data": {
-                  "name": "runIntake"
+                  "pathName": "New Auto FA 3"
                 }
               },
               {
-                "type": "path",
+                "type": "named",
                 "data": {
-                  "pathName": "GetNote"
+                  "name": "runIntake"
                 }
               }
             ]
           }
         },
         {
-          "type": "path",
+          "type": "deadline",
           "data": {
-            "pathName": "Scoot"
+            "commands": [
+              {
+                "type": "path",
+                "data": {
+                  "pathName": "New Auto FA 4"
+                }
+              },
+              {
+                "type": "named",
+                "data": {
+                  "name": "runIntake"
+                }
+              }
+            ]
           }
         },
         {
@@ -96,6 +108,6 @@
       ]
     }
   },
-  "folder": null,
+  "folder": "New Autos",
   "choreoAuto": false
 }

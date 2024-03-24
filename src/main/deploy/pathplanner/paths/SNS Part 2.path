@@ -16,12 +16,12 @@
     },
     {
       "anchor": {
-        "x": 4.540528748910404,
-        "y": 2.4053335888403695
+        "x": 2.6415811787732717,
+        "y": 3.38889104824473
       },
       "prevControl": {
-        "x": 3.540528748910404,
-        "y": 2.4053335888403695
+        "x": 2.6513193714406422,
+        "y": 3.2233417728994422
       },
       "nextControl": null,
       "isLocked": false,
@@ -32,8 +32,8 @@
   "constraintZones": [],
   "eventMarkers": [],
   "globalConstraints": {
-    "maxVelocity": 3.0,
-    "maxAcceleration": 3.0,
+    "maxVelocity": 5.18,
+    "maxAcceleration": 6.0,
     "maxAngularVelocity": 540.0,
     "maxAngularAcceleration": 720.0
   },
@@ -43,7 +43,7 @@
     "rotateFast": false
   },
   "reversed": false,
-  "folder": "Single Note Source",
+  "folder": null,
   "previewStartingState": {
     "rotation": 0,
     "velocity": 0

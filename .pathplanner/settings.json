@@ -1,22 +1,25 @@
 {
-  "robotWidth": 0.9,
-  "robotLength": 0.9,
+  "robotWidth": 0.86,
+  "robotLength": 0.86,
   "holonomicMode": true,
   "pathFolders": [
     "2 Amp 1 Speaker",
     "2 Note Amp Side",
     "3 Note Amp Side",
     "4 Note Inside",
+    "Adjusting Intake",
     "Amp and 2",
     "Front 2",
-    "Adjusting Intake",
-    "Single Note Source"
+    "New Auto 2 Ampside",
+    "New Auto 4NI",
+    "New Auto Sourceside",
+    "New Auto Far Ampside"
   ],
   "autoFolders": [
-    "New Folder"
+    "New Autos"
   ],
-  "defaultMaxVel": 3.0,
-  "defaultMaxAccel": 3.0,
+  "defaultMaxVel": 5.18,
+  "defaultMaxAccel": 6.0,
   "defaultMaxAngVel": 540.0,
   "defaultMaxAngAccel": 720.0,
   "maxModuleSpeed": 4.5

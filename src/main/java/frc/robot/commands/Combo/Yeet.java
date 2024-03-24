@@ -12,6 +12,8 @@ import frc.robot.Constants.ShooterConstants;
 import frc.robot.commands.Arm.SetArmAngle;
 import frc.robot.commands.Arm.WaitForArmAngle;
 import frc.robot.commands.Feeder.SetFeederSpeed;
+import frc.robot.commands.Feeder.WaitForNoNote;
+import frc.robot.commands.Feeder.WaitForNote;
 import frc.robot.commands.Intake.IdleIntake;
 import frc.robot.commands.Shooter.SetShooterSpeed;
 import frc.robot.subsystems.Arm;
@@ -27,19 +29,15 @@ public class Yeet extends SequentialCommandGroup {
     addCommands(
       new ParallelDeadlineGroup(
         new WaitForArmAngle(() -> ArmConstants.kYeetAngle, arm), 
-        new SetArmAngle(ArmConstants.kYeetAngle, arm),
+        new SetShooterSpeed(ShooterConstants.kShooterSpeedYeetRPS, shooter),
         new IdleIntake(intake)
       ),
       new ParallelDeadlineGroup(
-        new WaitCommand(1), 
-        new SetFeederSpeed(-1, feeder)
+        new WaitForNote(feeder),
+        new SetFeederSpeed(10, feeder)
       ),
       new ParallelDeadlineGroup(
-        new WaitCommand(0.75), 
-        new SetShooterSpeed(ShooterConstants.kShooterSpeedYeetRPS, shooter)
-      ),
-      new ParallelDeadlineGroup(
-        new WaitCommand(0.5), 
+        new WaitForNoNote(feeder),
         new SetFeederSpeed(10, feeder)
       ),
       new ReturnToBasic(arm, shooter, intake, feeder)

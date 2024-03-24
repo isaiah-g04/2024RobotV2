@@ -6,14 +6,12 @@ package frc.robot.commands.Combo;
 
 import edu.wpi.first.wpilibj2.command.ParallelCommandGroup;
 import edu.wpi.first.wpilibj2.command.ParallelDeadlineGroup;
-import edu.wpi.first.wpilibj2.command.PrintCommand;
 import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
 import frc.robot.commands.Arm.SetArmAngle;
 import frc.robot.commands.Arm.WaitForArmAngle;
 import frc.robot.commands.Feeder.SetFeederSpeed;
 import frc.robot.commands.Feeder.WaitForNoNote;
 import frc.robot.commands.Feeder.WaitForNote;
-import frc.robot.commands.Shooter.AutoRPM;
 import frc.robot.commands.Shooter.SetShooterSpeed;
 import frc.robot.commands.Shooter.WaitForShooterSpeed;
 import frc.robot.commands.Swerve.PIDTurning;

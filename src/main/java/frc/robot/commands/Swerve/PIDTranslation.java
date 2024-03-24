@@ -13,7 +13,6 @@ import frc.robot.subsystems.Swerve;
 
 public class PIDTranslation extends PIDCommand {
   private final Timer m_timer = new Timer();
-  private final Limelight lite;
 
   /** Creates a new PIDTurning. */
   public PIDTranslation(Swerve swerve, Limelight light) {
@@ -35,7 +34,6 @@ public class PIDTranslation extends PIDCommand {
     m_timer.start();
     getController().setTolerance(6);
     addRequirements(swerve);
-    lite = light;
   }
 
   // Returns true when the command should end.%
@@ -44,7 +42,7 @@ public class PIDTranslation extends PIDCommand {
     // System.out.println(lite.getTX("limelight-intake"));
     if (m_timer.get() < 0.3) {
       return false;
-    } else if(m_timer.get() > 5) {
+    } else if(m_timer.get() > 1) {
       return true;
       // return false;
     } else {

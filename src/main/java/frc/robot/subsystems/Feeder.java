@@ -26,7 +26,11 @@ public class Feeder extends ProfiledPIDSubsystem {
 
   private final RelativeEncoder m_encoder;
 
-  private final GenericEntry m_hasNote;
+  private double m_current;
+
+  // private final GenericEntry m_hasNote;
+  private final GenericEntry m_noteDetected;
+  private final GenericEntry m_feederCurrent;
   private final ShuffleboardTab m_tab = Shuffleboard.getTab("Main");
   
   /** Creates a new Feeder. */
@@ -46,12 +50,16 @@ public class Feeder extends ProfiledPIDSubsystem {
 
     m_encoder.setVelocityConversionFactor((Math.PI * FeederConstants.kWheelDiameterIN) / (12 * 60 * FeederConstants.kGearboxRatio));
 
+    m_current = m_feederMotor.getOutputCurrent();
+
     setSpeed(0);
     enable();
 
     m_controller.setTolerance(1);
 
-    m_hasNote = m_tab.add("Has Note",haveNote()).withWidget(BuiltInWidgets.kBooleanBox).getEntry();
+    // m_hasNote = m_tab.add("Has Note",haveNote()).withWidget(BuiltInWidgets.kBooleanBox).getEntry();
+    m_noteDetected = m_tab.add("Note Detected", noteDetected()).withWidget(BuiltInWidgets.kBooleanBox).getEntry();
+    m_feederCurrent = m_tab.add("Feeder Current", feederCurrent()).getEntry();
   }
 
   @Override
@@ -78,8 +86,22 @@ public class Feeder extends ProfiledPIDSubsystem {
     return m_LC.get();
   }
 
+  public double feederCurrent() {
+    return m_current = m_feederMotor.getOutputCurrent();
+  }
+
+  public boolean noteDetected() {
+    if(m_feederMotor.getOutputCurrent() > 16) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
   public void periodic() {
     super.periodic();
-    m_hasNote.setBoolean(haveNote());
+    // m_hasNote.setBoolean(haveNote());
+    m_noteDetected.setBoolean(noteDetected());
+    m_feederCurrent.setDouble(m_current);
   }
 }
