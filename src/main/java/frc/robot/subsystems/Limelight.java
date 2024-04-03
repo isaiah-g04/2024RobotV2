@@ -35,7 +35,7 @@ public class Limelight extends SubsystemBase {
 
   public double getTargetArmAngle() {
     // System.out.println(((26.155 * getSpeakerDistance()) - (3.15 * Math.pow(getSpeakerDistance(), 2)) - 0.25));
-    return ((15 * getSpeakerDistance()) - (1.59 * Math.pow(getSpeakerDistance(), 2)) + 15.5);
+    return ((15 * getSpeakerDistance()) - (1.595 * Math.pow(getSpeakerDistance(), 2)) + 15.5);
   }
 
   public double getTargetRPM() {
