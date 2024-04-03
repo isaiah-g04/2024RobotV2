@@ -10,13 +10,10 @@ import frc.robot.LimelightHelpers;
 import frc.robot.subsystems.Limelight;
 
 public class BlinkLimelight extends Command {
-  private final Limelight m_light;
   private final Timer m_timer;
 
   /** Creates a new BlinkLimelight. */
   public BlinkLimelight(Limelight light) {
-    // Use addRequirements() here to declare subsystem dependencies.
-    m_light = light;
     m_timer = new Timer();
   }
 
@@ -44,7 +41,7 @@ public class BlinkLimelight extends Command {
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    if (m_timer.get() > 3) {
+    if (m_timer.get() > 0.75) {
       return true;
     } else {
       return false;

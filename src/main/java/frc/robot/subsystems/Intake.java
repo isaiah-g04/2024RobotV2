@@ -11,7 +11,6 @@ import com.revrobotics.CANSparkLowLevel.MotorType;
 import edu.wpi.first.networktables.GenericEntry;
 import edu.wpi.first.wpilibj.shuffleboard.Shuffleboard;
 import edu.wpi.first.wpilibj.shuffleboard.ShuffleboardTab;
-import edu.wpi.first.wpilibj.shuffleboard.SimpleWidget;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants.IntakeConstants;
 
@@ -24,6 +23,8 @@ public class Intake extends SubsystemBase {
 
   private final ShuffleboardTab m_tab = Shuffleboard.getTab("Main");
   private final GenericEntry m_intakeCurrent;
+  private final GenericEntry m_intakeRunning;
+  private final GenericEntry m_touchingNote;
 
   /** Creates a new Intake. */
   public Intake() {
@@ -37,6 +38,8 @@ public class Intake extends SubsystemBase {
     m_backEncoder.setVelocityConversionFactor((Math.PI * IntakeConstants.kWheelDiameterIN) / (12 * 60 * IntakeConstants.kGearboxRatio));
 
     m_intakeCurrent = m_tab.add("Intake Current", m_frontIntake.getOutputCurrent()).getEntry();
+    m_intakeRunning = m_tab.add("Intake Running", intakeRunning()).getEntry();
+    m_touchingNote = m_tab.add("Touching Note", currentDetectedNote()).getEntry();
   }
 
   public void runMotors(double speed) {
@@ -49,7 +52,15 @@ public class Intake extends SubsystemBase {
   }
 
   public boolean currentDetectedNote() {
-    if(motorCurrent() < 16) {
+    if(motorCurrent() >= 11) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  public boolean intakeRunning() {
+    if (m_frontIntake.getOutputCurrent() > 1) {
       return true;
     } else {
       return false;
@@ -60,5 +71,7 @@ public class Intake extends SubsystemBase {
   public void periodic() {
       // This method will be called once per scheduler run
       m_intakeCurrent.setDouble(motorCurrent());
+      m_intakeRunning.setBoolean(intakeRunning());
+      m_touchingNote.setBoolean(currentDetectedNote());
     }
   }

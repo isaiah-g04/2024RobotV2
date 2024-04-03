@@ -4,15 +4,21 @@
 
 package frc.robot.commands.Combo;
 
+import edu.wpi.first.wpilibj2.command.ParallelCommandGroup;
 import edu.wpi.first.wpilibj2.command.ParallelDeadlineGroup;
 import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
+import frc.robot.Constants.ArmConstants;
+import frc.robot.Constants.ShooterConstants;
+import frc.robot.commands.Arm.SetArmAngle;
 import frc.robot.commands.Blinkin.BlinkLimelight;
 import frc.robot.commands.Feeder.SetFeederSpeed;
 import frc.robot.commands.Feeder.WaitForNoNote;
 import frc.robot.commands.Feeder.WaitForNote;
+import frc.robot.commands.Intake.IdleIntake;
 import frc.robot.commands.Intake.IdleOuttake;
 import frc.robot.commands.Intake.SimpleIntake;
 import frc.robot.commands.Intake.StopIntake;
+import frc.robot.commands.Shooter.SetShooterSpeed;
 import frc.robot.subsystems.Arm;
 import frc.robot.subsystems.Feeder;
 import frc.robot.subsystems.Intake;
@@ -35,9 +41,14 @@ public class AutoIntake extends SequentialCommandGroup {
         new SetFeederSpeed(-2, feeder),
         new IdleOuttake(intake)
       ),
-      new StopIntake(intake),
       new SetFeederSpeed(0, feeder),
-      new BlinkLimelight(light)
+      new ParallelCommandGroup(
+        new BlinkLimelight(light),
+        new IdleIntake(intake),
+        new SetArmAngle((ArmConstants.kIdleArmAngle), arm),
+        new SetShooterSpeed(ShooterConstants.kIdleSpeedRPS, shooter),
+        new StopIntake(intake)
+      )
     );
   }
 }

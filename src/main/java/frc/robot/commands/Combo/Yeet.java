@@ -6,10 +6,8 @@ package frc.robot.commands.Combo;
 
 import edu.wpi.first.wpilibj2.command.ParallelDeadlineGroup;
 import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
-import edu.wpi.first.wpilibj2.command.WaitCommand;
 import frc.robot.Constants.ArmConstants;
 import frc.robot.Constants.ShooterConstants;
-import frc.robot.commands.Arm.SetArmAngle;
 import frc.robot.commands.Arm.WaitForArmAngle;
 import frc.robot.commands.Feeder.SetFeederSpeed;
 import frc.robot.commands.Feeder.WaitForNoNote;

@@ -16,12 +16,12 @@
     },
     {
       "anchor": {
-        "x": 1.3366633613457033,
-        "y": 3.9829208009542953
+        "x": 1.4341485330369506,
+        "y": 4.33684368607383
       },
       "prevControl": {
-        "x": 1.0055648106551263,
-        "y": 2.7851231028677956
+        "x": 1.1030499823463735,
+        "y": 3.13904598798733
       },
       "nextControl": null,
       "isLocked": false,
@@ -32,8 +32,8 @@
   "constraintZones": [],
   "eventMarkers": [],
   "globalConstraints": {
-    "maxVelocity": 5.18,
-    "maxAcceleration": 6.0,
+    "maxVelocity": 5.0,
+    "maxAcceleration": 5.0,
     "maxAngularVelocity": 540.0,
     "maxAngularAcceleration": 720.0
   },
@@ -43,10 +43,10 @@
     "rotateFast": false
   },
   "reversed": false,
-  "folder": "New Auto Sourceside",
+  "folder": "Sourceside",
   "previewStartingState": {
     "rotation": 0,
     "velocity": 0
   },
-  "useDefaultConstraints": true
+  "useDefaultConstraints": false
 }

@@ -15,9 +15,9 @@ public class PIDTurning extends PIDCommand {
   public PIDTurning(Swerve swerve, Limelight light) {
     super(
         // The controller that the command will use
-        new PIDController(0.08, 0.1, 0.01), //TODO: tune this
+        new PIDController(0.08, 0.1, 0.01),
         // This should return the measurement
-        (() -> light.getTX("limelight-shooter") - 10),
+        (() -> light.getTX("limelight-shooter") - 5),
         // This should return the setpoint (can also be a constant)
         () -> 0,
         // This uses the output

@@ -6,12 +6,16 @@ package frc.robot.commands.Combo;
 
 import edu.wpi.first.wpilibj2.command.ParallelCommandGroup;
 import edu.wpi.first.wpilibj2.command.ParallelDeadlineGroup;
+import edu.wpi.first.wpilibj2.command.ParallelRaceGroup;
 import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
+import edu.wpi.first.wpilibj2.command.WaitCommand;
 import frc.robot.commands.Arm.SetArmAngle;
 import frc.robot.commands.Arm.WaitForArmAngle;
 import frc.robot.commands.Feeder.SetFeederSpeed;
 import frc.robot.commands.Feeder.WaitForNoNote;
 import frc.robot.commands.Feeder.WaitForNote;
+import frc.robot.commands.Intake.IdleIntake;
+import frc.robot.commands.Intake.StopIntake;
 import frc.robot.commands.Shooter.SetShooterSpeed;
 import frc.robot.commands.Shooter.WaitForShooterSpeed;
 import frc.robot.commands.Swerve.PIDTurning;
@@ -22,30 +26,35 @@ import frc.robot.subsystems.Limelight;
 import frc.robot.subsystems.Shooter;
 import frc.robot.subsystems.Swerve;
 
-public class AutoShoot extends SequentialCommandGroup {
+public class AutoShoot extends ParallelRaceGroup {
   /** Creates a new AutoShoot. */
   public AutoShoot(Shooter shooter, Swerve swerve, Limelight light, Feeder feeder, Arm arm, Intake intake) {
     // Add your commands in the addCommands() call, e.g.
     // addCommands(new FooCommand(), new BarCommand());
     addCommands(
-      new ParallelDeadlineGroup(
-        new WaitForArmAngle(() -> light.getTargetArmAngle(), arm),
-        new WaitForShooterSpeed(light.getTargetRPM(), shooter),
-        new PIDTurning(swerve, light)
+      new SequentialCommandGroup(
+        new ParallelDeadlineGroup(
+          new WaitForArmAngle(() -> light.getTargetArmAngle(), arm),
+          new WaitForShooterSpeed(light.getTargetRPM(), shooter),
+          new PIDTurning(swerve, light),
+          new IdleIntake(intake)
+        ),
+        new ParallelDeadlineGroup(
+          new WaitForNote(feeder), 
+          new SetFeederSpeed(10, feeder)
+        ),
+        new ParallelDeadlineGroup(
+          new WaitForNoNote(feeder), 
+          new SetFeederSpeed(10, feeder)
+        ),
+        new ParallelCommandGroup(
+          new SetShooterSpeed(0, shooter),
+          new SetFeederSpeed(0, feeder),
+          new SetArmAngle(0, arm),
+          new StopIntake(intake)
+        )
       ),
-      new ParallelDeadlineGroup(
-        new WaitForNote(feeder), 
-        new SetFeederSpeed(10, feeder)
-      ),
-      new ParallelDeadlineGroup(
-        new WaitForNoNote(feeder), 
-        new SetFeederSpeed(10, feeder)
-      ),
-      new ParallelCommandGroup(
-        new SetShooterSpeed(0, shooter),
-        new SetFeederSpeed(0, feeder),
-        new SetArmAngle(0, arm)
-      )
+      new WaitCommand(1.5)
     );
   }
 }

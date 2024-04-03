@@ -19,27 +19,44 @@ public class Limelight extends SubsystemBase {
   public GenericEntry m_distance;
   private ShuffleboardTab m_tab;
 
-  public double m_goodDistance = getDistance();
+  public double m_goodDistance = getSpeakerDistance();
 
   /** Creates a new Limelight. */
-  public Limelight() { //TODO: name limelights and add intake methods
+  public Limelight() {
     setCorrectTarget();
     m_tab = Shuffleboard.getTab("Main");
-    m_distance = m_tab.add("Distance", getDistance()).withWidget(BuiltInWidgets.kTextView).getEntry();
+    m_distance = m_tab.add("Distance", getSpeakerDistance()).withWidget(BuiltInWidgets.kTextView).getEntry();
   }
 
-  public double getDistance() {
+  public double getSpeakerDistance() {
     // System.out.println((LimelightConstants.kGoalHeightMeters - LimelightConstants.kLimelightLensHeightMeters) / Math.tan(LimelightConstants.kMountAngleRadians + Units.degreesToRadians(LimelightHelpers.getTY("limelight-shooter"))));
-    return (LimelightConstants.kGoalHeightMeters - LimelightConstants.kLimelightLensHeightMeters) / Math.tan(LimelightConstants.kMountAngleRadians + Units.degreesToRadians(LimelightHelpers.getTY("limelight-shooter")));
+    return (LimelightConstants.kGoalHeightMeters - LimelightConstants.kShooterLimelightLensHeightMeters) / Math.tan(LimelightConstants.kShooterMountAngleRadians + Units.degreesToRadians(LimelightHelpers.getTY("limelight-shooter")));
   }
 
   public double getTargetArmAngle() {
-    return (15.2 + (16.7 * getDistance()) + (-1.68 * Math.pow(getDistance(), 2)));
+    // System.out.println(((26.155 * getSpeakerDistance()) - (3.15 * Math.pow(getSpeakerDistance(), 2)) - 0.25));
+    return ((15 * getSpeakerDistance()) - (1.595 * Math.pow(getSpeakerDistance(), 2)) + 15.5);
   }
 
   public double getTargetRPM() {
     // System.out.println((65 + (5 * getDistance())));
-    return (65 + (5 * getDistance()));
+    return (50 + (5 * getSpeakerDistance()));
+  }
+
+  public double getNoteDistance() {
+    return (LimelightConstants.kIntakeLimelightLensHeightMeters) / Math.tan(LimelightConstants.kIntakeMountAngleRadians + Units.degreesToRadians(LimelightHelpers.getTY("limelight-intake")));
+  }
+
+  public double getNoteProximity() {
+    return Math.pow((Math.pow(getNoteDistance(), 2) + Math.pow(LimelightConstants.kIntakeLimelightLensHeightMeters, 2)), 0.5);
+  }
+
+  public double noteXDistance() {
+    return (getNoteProximity()) * Math.cos(LimelightHelpers.getTX("limelight-intake"));
+  }
+
+  public double noteYDistance() {
+    return (getNoteProximity()) * Math.sin(LimelightHelpers.getTX("limelight-intake"));
   }
 
   public double getTX(String limelight) {
@@ -64,6 +81,6 @@ public class Limelight extends SubsystemBase {
   @Override
   public void periodic() {
     // This method will be called once per scheduler run
-    m_distance.setDouble(getDistance());
+    m_distance.setDouble(getSpeakerDistance());
   }
 }

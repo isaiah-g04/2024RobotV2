@@ -4,9 +4,9 @@
 
 package frc.robot.commands.Combo;
 
-import edu.wpi.first.wpilibj2.command.ParallelCommandGroup;
+import edu.wpi.first.wpilibj2.command.ParallelDeadlineGroup;
 import frc.robot.Constants.ArmConstants;
-import frc.robot.commands.Arm.SetArmAngle;
+import frc.robot.commands.Arm.WaitForArmAngle;
 import frc.robot.commands.Feeder.SetFeederSpeed;
 import frc.robot.commands.Intake.StopIntake;
 import frc.robot.commands.Shooter.SetShooterSpeed;
@@ -15,16 +15,20 @@ import frc.robot.subsystems.Feeder;
 import frc.robot.subsystems.Intake;
 import frc.robot.subsystems.Shooter;
 
-public class ReturnToBasic extends ParallelCommandGroup {
+// NOTE:  Consider using this command inline, rather than writing a subclass.  For more
+// information, see:
+// https://docs.wpilib.org/en/stable/docs/software/commandbased/convenience-features.html
+public class ReturnToBasic extends ParallelDeadlineGroup {
   /** Creates a new ReturnToBasic. */
   public ReturnToBasic(Arm arm, Shooter shooter, Intake intake, Feeder feeder) {
-    // Add your commands in the addCommands() call, e.g.
-    // addCommands(new FooCommand(), new BarCommand());
-    addCommands(
-      new SetArmAngle(ArmConstants.kArmHomeAngle, arm),
+    // Add the deadline command in the super() call. Add other commands using
+    // addCommands().
+    super(
+      new WaitForArmAngle(() -> ArmConstants.kArmHomeAngle, arm),
+      new SetShooterSpeed(0, shooter),
       new SetFeederSpeed(0, feeder),
-      new StopIntake(intake),
-      new SetShooterSpeed(0, shooter)
+      new StopIntake(intake)
     );
+    // addCommands(new FooCommand(), new BarCommand());
   }
 }

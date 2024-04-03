@@ -27,6 +27,7 @@ public final class Constants {
         public static final double kShooterSpeedFarRPS = 95;
         public static final double kShooterSpeedAmpRPS = 15;
         public static final double kShooterSpeedYeetRPS = 40;
+        public static final double kIdleSpeedRPS = 50;
     }
 
     public static final class FeederConstants {
@@ -47,7 +48,8 @@ public final class Constants {
         public static final double kSpeakerMidAngle = 50;
         public static final double kSpeakerFarAngle = 58.75;
         public static final double kArmHomeAngle = 0;
-        public static final double kYeetAngle = 35; //TODO: Tune this number at Mason
+        public static final double kYeetAngle = 35;
+        public static final double kIdleArmAngle = 15;
     }
 
     public final class IntakeConstants {
@@ -59,9 +61,11 @@ public final class Constants {
     }
 
     public static final class LimelightConstants {
-        public static final double kMountAngleRadians = Units.degreesToRadians(30);
-        public static final double kLimelightLensHeightMeters = Units.inchesToMeters(13.75);
+        public static final double kShooterMountAngleRadians = Units.degreesToRadians(30);
+        public static final double kShooterLimelightLensHeightMeters = Units.inchesToMeters(13.75);
         public static final double kGoalHeightMeters = Units.inchesToMeters(53.875);
+        public static final double kIntakeLimelightLensHeightMeters = Units.inchesToMeters(9);
+        public static final double kIntakeMountAngleRadians = Units.degreesToRadians(30);
     }
 
     public final class ClimberConstants {
@@ -80,8 +84,8 @@ public final class Constants {
         COTSTalonFXSwerveConstants.SDS.MK4i.KrakenX60(COTSTalonFXSwerveConstants.SDS.MK4i.driveRatios.L3);
 
         /* Drivetrain Constants */
-        public static final double trackWidth = Units.inchesToMeters(21.73); //TODO: This must be tuned to specific robot
-        public static final double wheelBase = Units.inchesToMeters(21.73); //TODO: This must be tuned to specific robot
+        public static final double trackWidth = Units.inchesToMeters(21.73); //This is tuned for Big Cheese V2
+        public static final double wheelBase = Units.inchesToMeters(21.73); //This is tuned for Big Cheese V2
         public static final double driveBaseRadius = Math.sqrt((trackWidth * trackWidth) + (wheelBase * wheelBase));
         public static final double wheelCircumference = chosenModule.wheelCircumference;
 
@@ -128,21 +132,21 @@ public final class Constants {
         public static final double angleKD = chosenModule.angleKD;
 
         /* Drive Motor PID Values */
-        public static final double driveKP = 0.12; //TODO: This must be tuned to specific robot
+        public static final double driveKP = 0.12;
         public static final double driveKI = 0.0;
         public static final double driveKD = 0.0;
         public static final double driveKF = 0.0;
 
         /* Drive Motor Characterization Values From SYSID */
-        public static final double driveKS = 0.32; //TODO: This must be tuned to specific robot
+        public static final double driveKS = 0.32;
         public static final double driveKV = 1.51;
         public static final double driveKA = 0.27;
 
         /* Swerve Profiling Values */
         /** Meters per Second */
-        public static final double maxSpeed = Units.feetToMeters(17); //TODO: This must be tuned to specific robot
+        public static final double maxSpeed = Units.feetToMeters(17); //This is tuned for MK4i L3 with Krakens
         /** Radians per Second */
-        public static final double maxAngularVelocity = 10.0; //TODO: This must be tuned to specific robot
+        public static final double maxAngularVelocity = 10.0; //This is tuned for Big Cheese V2
 
         /* Neutral Modes */
         public static final NeutralModeValue angleNeutralMode = NeutralModeValue.Coast;
@@ -150,7 +154,7 @@ public final class Constants {
 
         /* Module Specific Constants */
         /* Front Left Module - Module 0 */
-        public static final class Mod0 { //TODO: This must be tuned to specific robot
+        public static final class Mod0 { //This is tuned to Big Cheese V2
             public static final int driveMotorID = 1;
             public static final int angleMotorID = 2;
             public static final int canCoderID = 1;
@@ -160,7 +164,7 @@ public final class Constants {
         }
 
         /* Front Right Module - Module 1 */
-        public static final class Mod1 { //TODO: This must be tuned to specific robot
+        public static final class Mod1 { //This is tuned to Big Cheese V2
             public static final int driveMotorID = 3;
             public static final int angleMotorID = 4;
             public static final int canCoderID = 2;
@@ -170,7 +174,7 @@ public final class Constants {
         }
         
         /* Back Left Module - Module 2 */
-        public static final class Mod2 { //TODO: This must be tuned to specific robot
+        public static final class Mod2 { //This is tuned to Big Cheese V2
             public static final int driveMotorID = 7;
             public static final int angleMotorID = 8;
             public static final int canCoderID = 4;
@@ -180,7 +184,7 @@ public final class Constants {
         }
 
         /* Back Right Module - Module 3 */
-        public static final class Mod3 { //TODO: This must be tuned to specific robot
+        public static final class Mod3 { //This is tuned to Big Cheese V2
             public static final int driveMotorID = 5;
             public static final int angleMotorID = 6;
             public static final int canCoderID = 3;

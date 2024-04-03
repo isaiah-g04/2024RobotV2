@@ -15,7 +15,7 @@ public class PIDTurningIntake extends PIDCommand {
   public PIDTurningIntake(Swerve swerve, Limelight light) {
     super(
         // The controller that the command will use
-        new PIDController(0.2, 0.1, 0), //TODO: tune this
+        new PIDController(0.2, 0.1, 0),
         // This should return the measurement
         () -> light.getTX("limelight-intake"),
         // This should return the setpoint (can also be a constant)

@@ -47,7 +47,7 @@ public class Swerve extends SubsystemBase {
             this::getChassisSpeeds,
             this::setChassisSpeeds,
             new HolonomicPathFollowerConfig(
-                new PIDConstants(2.75, 1.25, 0), //TODO: tune these
+                new PIDConstants(2.75, 1.25, 0),
                 new PIDConstants(2.75, 1.25, 0),
                 SwerveConstants.maxSpeed,
                 SwerveConstants.driveBaseRadius,
@@ -74,8 +74,8 @@ public class Swerve extends SubsystemBase {
                                     getHeading()
                                 )
                                 : new ChassisSpeeds(
-                                    translation.getX(), 
-                                    translation.getY(), 
+                                    translation.getX() * m_slowDrive, 
+                                    translation.getY() * m_slowDrive, 
                                     rotation)
                                 );
         SwerveDriveKinematics.desaturateWheelSpeeds(swerveModuleStates, SwerveConstants.maxSpeed);

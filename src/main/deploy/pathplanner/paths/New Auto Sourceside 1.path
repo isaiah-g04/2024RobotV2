@@ -3,25 +3,25 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 0.49852307327766043,
-        "y": 2.080077953748703
+        "x": 0.48487878974106413,
+        "y": 4.099779112961975
       },
       "prevControl": null,
       "nextControl": {
-        "x": 0.4894405992826222,
-        "y": 2.0644968454816626
+        "x": 0.4757963157460259,
+        "y": 4.084198004694935
       },
       "isLocked": false,
       "linkedName": null
     },
     {
       "anchor": {
-        "x": 1.258757820004845,
-        "y": 4.099779112961975
+        "x": 1.5570755501544034,
+        "y": 4.33684368607383
       },
       "prevControl": {
-        "x": 1.278234205339585,
-        "y": 4.119255498296714
+        "x": 1.576551935489143,
+        "y": 4.356320071408568
       },
       "nextControl": null,
       "isLocked": false,
@@ -39,11 +39,11 @@
   },
   "goalEndState": {
     "velocity": 0,
-    "rotation": -42.6140559696112,
+    "rotation": -35.78897345918349,
     "rotateFast": false
   },
   "reversed": false,
-  "folder": "New Auto Sourceside",
+  "folder": "Sourceside",
   "previewStartingState": {
     "rotation": 0,
     "velocity": 0
